@@ -9,27 +9,52 @@ int main()
   printf("************************\n");
 
   int secretNumber = 42;
-
+  int numberOfAttempts = 1;
   int kick;
+  int win = 0; 
 
-  int x;
+  // Loop para o número de rodadas jogadas
+  while (1)
+  {
+    /* code */
+    printf("O número secreto é %d. Não conta pra ninguém!\n", secretNumber);
 
-  int y;
+    printf("Tentativa %d de \n", numberOfAttempts);
+    printf("Qual é o seu chute? ");
+    scanf("%d", &kick);
+    printf("Seu chute foi %d\n", kick);
 
-  printf("O número secreto é %d. Não conta pra ninguém!\n", secretNumber);
+    printf("%d, %d", kick, secretNumber);
 
-  printf("Qual é o seu chute? ");
-  scanf("%d", &kick);
-  printf("Seu chute foi %d\n", kick);
+    if(kick < 0){
+      printf("Você não pode chutar número negativo\n");
 
-  printf("%d, %d", kick, secretNumber);
+      continue;
+    }
 
-  printf("Digite um número X: ");
-  scanf("%d", &x);
-  printf("\nAgora digite outro número Y: ");
-  scanf("%d", &y);
+    int acertou = (kick == secretNumber);
+    int maior = kick > secretNumber;
 
-  int mult = x * y;
+    printf("%d Acertou: \n", acertou);
 
-  printf("A multiplicação dos dois números deu %d", mult);
+    if (acertou)
+    {
+      printf("Parabéns você acertou!\n");
+      printf("Jogue Novamente!\n");
+
+      break;
+    }
+    else if (maior)
+    {
+      printf("Você errou! Seu chute foi maior que o número secreto\n");
+    }
+    else
+    {
+      printf("Você errou! Seu chute foi menor que o número secreto\n");
+    }
+
+    numberOfAttempts++;
+  }
+  printf("Fim de jogo");
+  printf("Você acertou em %d. de tentativas", numberOfAttempts-1);
 }
