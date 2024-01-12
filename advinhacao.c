@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Function that starts the code
 int main()
@@ -8,10 +10,18 @@ int main()
   printf("Bem vindo ao jogo de advinhação\n");
   printf("************************\n");
 
-  int secretNumber = 42;
+  int seg = time(0);
+  srand(seg);
+
+  int bigNumber = rand();
+
+// Calculando o número gerado por 100 para o resto ser entre 0 a 99  
+  int secretNumber = bigNumber % 100;
   int numberOfAttempts = 1;
   int kick;
   int win = 0; 
+
+  double pontos = 1000;
 
   // Loop para o número de rodadas jogadas
   while (1)
@@ -54,7 +64,11 @@ int main()
     }
 
     numberOfAttempts++;
+    
+    double pontosPerdidos = abs(kick - secretNumber) / (double) 2;
+    pontos = pontos - pontosPerdidos;
   }
   printf("Fim de jogo");
   printf("Você acertou em %d. de tentativas", numberOfAttempts-1);
+  printf("Total de ponto: %.2f", pontos);
 }
