@@ -48,13 +48,6 @@ int main()
     break;
   }
 
-  if(nivel == 1){
-    numeroDeTentativas = 20;
-  } else if(nivel == 2){
-    numeroDeTentativas = 15;
-  } else {
-    numeroDeTentativas = 6;
-  }
   // Loop para o número de rodadas jogadas
   for (int i = 1; i <= numeroDeTentativas; i++)
   {
